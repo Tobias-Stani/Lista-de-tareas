@@ -30,8 +30,9 @@ body {
   );
 
   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#9BF8F4", endColorstr="#6F7BF7", GradientType=1 );
-
   height: 100vh;
+
+  background-attachment: fixed;
 }
 
 
