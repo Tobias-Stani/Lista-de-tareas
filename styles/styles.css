@@ -1,0 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&family=Montserrat:ital,wght@0,100;1,100;1,200;1,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap");
+
+* {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+
+  background: hsla(177, 87%, 79%, 1);
+
+  background: linear-gradient(
+    90deg,
+    hsla(177, 87%, 79%, 1) 0%,
+    hsla(235, 89%, 70%, 1) 100%
+  );
+
+  background: -moz-linear-gradient(
+    90deg,
+    hsla(177, 87%, 79%, 1) 0%,
+    hsla(235, 89%, 70%, 1) 100%
+  );
+
+  background: -webkit-linear-gradient(
+    90deg,
+    hsla(177, 87%, 79%, 1) 0%,
+    hsla(235, 89%, 70%, 1) 100%
+  );
+
+  filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#9BF8F4", endColorstr="#6F7BF7", GradientType=1 );
+
+  height: 100vh;
+}
+
+
+
+/* lista de tareas */
+
+.container{
+    box-sizing: border-box;
+    width: 400px;
+    height: 600px;
+    margin: 0 auto;
+    max-width: 80%;
+}
+
+.perfil h1{
+    color: white;
+    padding: 50px 0 5px 0;
+}
+
+.perfil span {
+    color: white;
+    letter-spacing: 2px;
+}
+
+.agregar-tarea{
+    background-color: white;
+    border-radius: 15px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 70px;
+    margin: 40px 0;
+
+}
+
+.agregar-tarea input {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    border: none;
+    background-color: white;
+
+}
+
+.agregar-tarea i {
+    font-size: 50px;
+    color: purple; /*cambiar color*/
+   
+
+}
+
+.agregar-tarea i:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.agregar-tarea input::placeholder {
+    font-size: 1.1rem;
+    color: purple;
+}
+
+
+
+/* seccion tarea */
+
+.seccion-tarea h3{
+    color: white;
+    margin-bottom: 20px;
+
+}
+
+.seccion-tarea li {
+    display: flex;
+    /* background: linear-gradient(to bottom blue , green); */
+    border-radius: 15px;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+    margin: 5px 0;
+    color: white;
+}
+
+.seccion-tarea i {
+    font-size: 25px;
+}
+
+.seccion-tarea i:hover {
+    color: aqua;
+    cursor: pointer;
+
+}
+
+.seccion-tarea >ul p {
+    font-size: 1.2rem;
+}
+
+.line-trough {
+    text-decoration: line-through;
+    color: aqua;
+}
+
+
+
+/* lista de tareas */
+
