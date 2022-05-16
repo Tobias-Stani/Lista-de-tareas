@@ -1,5 +1,5 @@
 // Lista de tareas
-
+// VARIABLES LISTA TAREAS
 const lista = document.getElementById("lista");
 const input = document.getElementById("input");
 const botonEnter = document.getElementById("enter");
@@ -9,7 +9,11 @@ const lineThrough = "line-through";
 let id;
 let LIST;
 
-// agregado de tareas
+// VARIABLES RELOJ
+const time = document.getElementById('time')
+const fecha = document.getElementById('fecha')
+
+// ============AGREGADO DE TAREAS===================
 
 function agregarTarea(tarea, id, realizado, eliminado) {
   if (eliminado) {
@@ -30,7 +34,7 @@ function agregarTarea(tarea, id, realizado, eliminado) {
   lista.insertAdjacentHTML("afterbegin", elemento);
 }
 
-// tarea reliaxada NO ANDA
+// TAREA REALIZADA
 
 function tareaRealizada(element) {
   element.classList.toggle(check);
@@ -39,7 +43,7 @@ function tareaRealizada(element) {
   LIST[element.id].realizado = LIST[element.id].realizado ? false : true;
 }
 
-// tarea eliminada
+// TAREA ELIMINADA
 
 function tareaEliminada(element) {
   element.parentNode.parentNode.removeChild(element.parentNode);
@@ -98,7 +102,7 @@ lista.addEventListener("click", function (event) {
   localStorage.setItem("TODO", JSON.stringify(LIST));
 });
 
-// localstorage getitem
+// LOCALSTORAGE GET ITEM
 
 let data = localStorage.getItem("TODO");
 if (data) {
@@ -118,81 +122,21 @@ function cargarLista(array) {
 }
 
 
-// RELOJ
+// ===========RELOJ================
 
-var Clock = (function(){
 
-	var exports = function(element) {
-		this._element = element;
-		var html = '';
-		for (var i=0;i<6;i++) {
-			html += '<span>&nbsp;</span>';
-		}
-		this._element.innerHTML = html;
-		this._slots = this._element.getElementsByTagName('span');
-		this._tick();
-	};
+const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Nobiembre", "Diciembre"]
 
-	exports.prototype = {
+const interval = setInterval (() => {
+    const local = new Date(); 
 
-		_tick:function() {
-			var time = new Date();
-			this._update(this._pad(time.getHours()) + this._pad(time.getMinutes()) + this._pad(time.getSeconds()));
-			var self = this;
-			setTimeout(function(){
-				self._tick();
-			},1000);
-		},
+    let day = local.getDate(),
+    month = local.getMonth(),
+    year = local.getFullYear(); 
 
-		_pad:function(value) {
-			return ('0' + value).slice(-2);
-		},
+    time.innerHTML = local.toLocaleTimeString();
+    fecha.innerHTML = `${day} ${monthNames[month]} ${year}`;
 
-		_update:function(timeString) {
-
-			var i=0,l=this._slots.length,value,slot,now;
-			for (;i<l;i++) {
-
-				value = timeString.charAt(i);
-				slot = this._slots[i];
-				now = slot.dataset.now;
-
-				if (!now) {
-					slot.dataset.now = value;
-					slot.dataset.old = value;
-					continue;
-				}
-
-				if (now !== value) {
-					this._flip(slot,value);
-				}
-			}
-		},
-
-		_flip:function(slot,value) {
-
-			// setup new state
-			slot.classList.remove('flip');
-			slot.dataset.old = slot.dataset.now;
-			slot.dataset.now = value;
-
-			// force dom reflow
-			slot.offsetLeft;
-
-			// start flippin
-			slot.classList.add('flip');
-
-		}
-
-	};
-
-	return exports;
-}());
-
-var i=0,clocks = document.querySelectorAll('.clock'),l=clocks.length;
-for (;i<l;i++) {
-	new Clock(clocks[i]);
-}
-
+})
 
 // RELOJ
