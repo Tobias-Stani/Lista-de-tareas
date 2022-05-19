@@ -162,3 +162,27 @@ body {
 
 /* lista de tareas */
 
+.footer {
+
+    position:fixed;
+    left:0px;
+    bottom:0px;
+    height:30px;
+    width:100%;
+    padding: 10px;
+    justify-content: center;
+    text-align: center;
+    color: #703090;
+}
+
+.footer h3 {
+    font-weight: 300;
+}
+
+/* Pedir Nombre */
+
+.divUsuario{
+    color: #fff;
+    font-weight: 400;
+    font-size: 1.5rem;
+}

@@ -9,9 +9,57 @@ const lineThrough = "line-through";
 let id;
 let LIST;
 
+
 // VARIABLES RELOJ
 const time = document.getElementById('time')
 const fecha = document.getElementById('fecha')
+
+
+// USUARIO
+// let divUsuario = document.getElementById('divUsuario')
+
+
+// NOTIFICACION PARA PEDIR EL NOMBRE
+  
+setTimeout(() => {
+  (async () => {
+
+    const { value: nombre } = await Swal.fire({
+      icon: 'question',
+      title: 'Ingrese su nombre',
+      input: 'text',
+      showCloseButton: true,
+      confirmButtonColor:'#FD6585',
+      inputValidator: (value) => {
+        if (!value) {
+          return 'Porfavor pone tu nombre 😫!'
+        }
+      }
+    })
+    
+    if (nombre) {
+      Swal.fire({
+        icon: 'success',
+        title: `Bienvenido ${nombre}`,
+        confirmButtonColor:'#FD6585',
+        showCloseButton: true,
+      })
+    }
+  
+    let divUsuario = document.getElementById('divUsuario')
+  
+    divUsuario.innerHTML += `
+     <h1 class="divUsuario">${nombre}, estas son tus tareas pendientes </h1>
+     `
+    console.log(nombre)
+    
+    })()
+
+}, 100);
+
+// NOTIFICACION PARA PEDIR EL NOMBRE
+
+
 
 // ============AGREGADO DE TAREAS===================
 
@@ -31,8 +79,23 @@ function agregarTarea(tarea, id, realizado, eliminado) {
                     </li>
     `;
 
+    Toastify({
+      text: "Agregaste la tarea. HACELA🤬",
+      duration: 1300,
+    //   close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "center", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "linear-gradient(to right, #FBAB7E, #F7CE68  )",
+      },
+      onClick: function(){} // Callback after click
+    }).showToast();
+
   lista.insertAdjacentHTML("afterbegin", elemento);
 }
+
+
 
 // TAREA REALIZADA
 
@@ -42,6 +105,8 @@ function tareaRealizada(element) {
   element.parentNode.querySelector(".text").classList.toggle(lineThrough);
   LIST[element.id].realizado = LIST[element.id].realizado ? false : true;
 }
+
+
 
 // TAREA ELIMINADA
 
@@ -102,6 +167,8 @@ lista.addEventListener("click", function (event) {
   localStorage.setItem("TODO", JSON.stringify(LIST));
 });
 
+
+
 // LOCALSTORAGE GET ITEM
 
 let data = localStorage.getItem("TODO");
@@ -122,6 +189,27 @@ function cargarLista(array) {
 }
 
 
+// NOTIFICACION DE TAREA AGREGADA CORRECTAMENTE
+
+botonEnter.addEventListener('click', () => {
+
+  Toastify({
+      text: "Agregaste la tarea. HACELA🤬",
+      duration: 1300,
+    //   close: true,
+      gravity: "top", // `top` or `bottom`
+      position: "center", // `left`, `center` or `right`
+      stopOnFocus: true, // Prevents dismissing of toast on hover
+      style: {
+        background: "linear-gradient(to right, #FBAB7E, #F7CE68  )",
+      },
+      onClick: function(){} // Callback after click
+    }).showToast();
+
+})
+
+
+
 // ===========RELOJ================
 
 
@@ -140,3 +228,6 @@ const interval = setInterval (() => {
 })
 
 // RELOJ
+
+
+

@@ -7,34 +7,44 @@
 
     <title>Document</title>
 
+    <!-- toastify -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css"
+    />
+    <!-- toastify -->
+
     <link rel="stylesheet" href="./styles/styles.css" />
   </head>
   <body>
     <!-- RELOJ -->
 
     <div class="container-clock">
-      <h1 id="time"> 00:00:00 </h1>
-      <p id="fecha"> Fecha </p>
+      <h1 id="time">00:00:00</h1>
+      <p id="fecha">Fecha</p>
     </div>
-  
-    <!-- RELOJ -->
 
+    <!-- RELOJ -->
 
     <!-- lista de tareas -->
 
     <div class="container">
       <div class="perfil">
-        <h1>Hola</h1>
+        <h1>Hola!!</h1>
         <span>Ponete a laburar 🤬</span>
       </div>
 
+      
       <div class="agregar-tarea">
         <input type="text" id="input" placeholder="Agrega una tarea" />
         <i id="enter" class="fas fa-plus-circle"></i>
       </div>
 
+      <div id="divUsuario"></div>
+      
       <div class="seccion-tarea">
-        <h3>Tareas pendientes</h3>
+        <!-- <h3>Tareas pendientes</h3> -->
         <ul id="lista">
           <!-- <li>
                     <i class="far fa-circle co" id="0" data="realizado"></i>
@@ -47,14 +57,28 @@
 
     <!-- lista de tareas -->
 
+    <footer class="footer">
+      <h3>Desarrollado por Tobias Stanislavsky😄👨🏻‍💻</h3>
+    </footer>
 
-    
+    <!-- TOASTIFY -->
+    <script
+      type="text/javascript"
+      src="https://cdn.jsdelivr.net/npm/toastify-js"
+    ></script>
+    <!-- TOASTIFY -->
 
-    <script src="./javascript/script.js"></script>
-
+    <!-- FONT AWSOME -->
     <script
       src="https://kit.fontawesome.com/3a5da5265b.js"
       crossorigin="anonymous"
     ></script>
+    <!-- FONT AWSOME -->
+
+    <!-- SWEET ALERT -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- SWEET ALERT -->
+
+    <script src="./javascript/script.js"></script>
   </body>
 </html>
