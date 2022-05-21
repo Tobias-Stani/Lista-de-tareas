@@ -9,57 +9,49 @@ const lineThrough = "line-through";
 let id;
 let LIST;
 
-
 // VARIABLES RELOJ
-const time = document.getElementById('time')
-const fecha = document.getElementById('fecha')
-
+const time = document.getElementById("time");
+const fecha = document.getElementById("fecha");
 
 // USUARIO
 // let divUsuario = document.getElementById('divUsuario')
 
-
 // NOTIFICACION PARA PEDIR EL NOMBRE
-  
+
 setTimeout(() => {
   (async () => {
-
     const { value: nombre } = await Swal.fire({
-      icon: 'question',
-      title: 'Ingrese su nombre',
-      input: 'text',
+      icon: "question",
+      title: "Ingrese su nombre",
+      input: "text",
       showCloseButton: true,
-      confirmButtonColor:'#FD6585',
+      confirmButtonColor: "#FD6585",
       inputValidator: (value) => {
         if (!value) {
-          return 'Porfavor pone tu nombre 😫!'
+          return "Porfavor pone tu nombre 😫!";
         }
-      }
-    })
-    
+      },
+    });
+
     if (nombre) {
       Swal.fire({
-        icon: 'success',
+        icon: "success",
         title: `Bienvenido ${nombre}`,
-        confirmButtonColor:'#FD6585',
+        confirmButtonColor: "#FD6585",
         showCloseButton: true,
-      })
+      });
     }
-  
-    let divUsuario = document.getElementById('divUsuario')
-  
+
+    let divUsuario = document.getElementById("divUsuario");
+
     divUsuario.innerHTML += `
      <h1 class="divUsuario">${nombre}, estas son tus tareas pendientes </h1>
-     `
-    console.log(nombre)
-    
-    })()
-
+     `;
+    console.log(nombre);
+  })();
 }, 100);
 
 // NOTIFICACION PARA PEDIR EL NOMBRE
-
-
 
 // ============AGREGADO DE TAREAS===================
 
@@ -72,30 +64,28 @@ function agregarTarea(tarea, id, realizado, eliminado) {
   const LINE = realizado ? lineThrough : "";
 
   const elemento = `
-                    <li id="elemento">
+                    <li id="elemento" class="tarea">
                     <i class="far ${REALIZADO}" data="realizado" id="${id}"></i>
                     <p class="text ${LINE}"> ${tarea} </p>
                     <i class="fas fa-trash de" data="eliminado" id="${id}" ></i>
                     </li>
     `;
 
-    Toastify({
-      text: "Agregaste la tarea. HACELA🤬",
-      duration: 1300,
+  Toastify({
+    text: "Agregaste la tarea. HACELA🤬",
+    duration: 1300,
     //   close: true,
-      gravity: "top", // `top` or `bottom`
-      position: "center", // `left`, `center` or `right`
-      stopOnFocus: true, // Prevents dismissing of toast on hover
-      style: {
-        background: "linear-gradient(to right, #FBAB7E, #F7CE68  )",
-      },
-      onClick: function(){} // Callback after click
-    }).showToast();
+    gravity: "top", // `top` or `bottom`
+    position: "center", // `left`, `center` or `right`
+    stopOnFocus: true, // Prevents dismissing of toast on hover
+    style: {
+      background: "linear-gradient(to right, #FBAB7E, #F7CE68  )",
+    },
+    onClick: function () {}, // Callback after click
+  }).showToast();
 
   lista.insertAdjacentHTML("afterbegin", elemento);
 }
-
-
 
 // TAREA REALIZADA
 
@@ -105,8 +95,6 @@ function tareaRealizada(element) {
   element.parentNode.querySelector(".text").classList.toggle(lineThrough);
   LIST[element.id].realizado = LIST[element.id].realizado ? false : true;
 }
-
-
 
 // TAREA ELIMINADA
 
@@ -167,8 +155,6 @@ lista.addEventListener("click", function (event) {
   localStorage.setItem("TODO", JSON.stringify(LIST));
 });
 
-
-
 // LOCALSTORAGE GET ITEM
 
 let data = localStorage.getItem("TODO");
@@ -188,46 +174,78 @@ function cargarLista(array) {
   });
 }
 
-
 // NOTIFICACION DE TAREA AGREGADA CORRECTAMENTE
 
-botonEnter.addEventListener('click', () => {
-
+botonEnter.addEventListener("click", () => {
   Toastify({
-      text: "Agregaste la tarea. HACELA🤬",
-      duration: 1300,
+    text: "Agregaste la tarea. HACELA🤬",
+    duration: 1300,
     //   close: true,
-      gravity: "top", // `top` or `bottom`
-      position: "center", // `left`, `center` or `right`
-      stopOnFocus: true, // Prevents dismissing of toast on hover
-      style: {
-        background: "linear-gradient(to right, #FBAB7E, #F7CE68  )",
-      },
-      onClick: function(){} // Callback after click
-    }).showToast();
-
-})
-
-
+    gravity: "top", // `top` or `bottom`
+    position: "center", // `left`, `center` or `right`
+    stopOnFocus: true, // Prevents dismissing of toast on hover
+    style: {
+      background: "linear-gradient(to right, #FBAB7E, #F7CE68  )",
+    },
+    onClick: function () {}, // Callback after click
+  }).showToast();
+});
 
 // ===========RELOJ================
 
+const monthNames = [
+  "Enero",
+  "Febrero",
+  "Marzo",
+  "Abril",
+  "Mayo",
+  "Junio",
+  "Julio",
+  "Agosto",
+  "Septiembre",
+  "Octubre",
+  "Nobiembre",
+  "Diciembre",
+];
 
-const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Nobiembre", "Diciembre"]
+const interval = setInterval(() => {
+  const local = new Date();
 
-const interval = setInterval (() => {
-    const local = new Date(); 
-
-    let day = local.getDate(),
+  let day = local.getDate(),
     month = local.getMonth(),
-    year = local.getFullYear(); 
+    year = local.getFullYear();
 
-    time.innerHTML = local.toLocaleTimeString();
-    fecha.innerHTML = `${day} ${monthNames[month]} ${year}`;
-
-})
+  time.innerHTML = local.toLocaleTimeString();
+  fecha.innerHTML = `${day} ${monthNames[month]} ${year}`;
+});
 
 // RELOJ
 
+// DRAG Y DROP
 
+Sortable.create(lista, {
+  animation: 250,
+  chosenClass: "seleccionado",
+  dragClass: "drag",
 
+  onEnd: () => {
+    console.log("elemento");
+  },
+
+  group: "lista-perosnas",
+  store: {
+    // guardar orden de la lista
+    set: (sortable) => {
+      const orden = sortable.toArray();
+      localStorage.setItem(sortable.options.group.names, orden.join("-"));
+    },
+
+    // obtener orden de lista
+    get: (sortable) => {
+      const orden = localStorage.getItem(sortable.options.group.names);
+      return orden ? orden.split("-") : [];
+    },
+  },
+});
+
+// DRAG Y DROP
