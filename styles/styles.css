@@ -63,6 +63,7 @@ body {
   padding: 10px;
   gap: 70px;
   margin: 40px 0;
+  box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
 }
 
 .agregar-tarea input {
@@ -136,7 +137,7 @@ body {
   padding: 10px;
   justify-content: center;
   text-align: center;
-  color: #703090;
+  color: #fff;
 }
 
 .footer h3 {
