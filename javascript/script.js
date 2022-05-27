@@ -15,38 +15,38 @@ const fecha = document.getElementById("fecha");
 
 // NOTIFICACION PARA PEDIR EL NOMBRE
 
-// setTimeout(() => {
-//   (async () => {
-//     const { value: nombre } = await Swal.fire({
-//       icon: "question",
-//       title: "Ingrese su nombre",
-//       input: "text",
-//       showCloseButton: true,
-//       confirmButtonColor: "#FD6585",
-//       inputValidator: (value) => {
-//         if (!value) {
-//           return "Porfavor pone tu nombre 😫!";
-//         }
-//       },
-//     });
+setTimeout(() => {
+  (async () => {
+    const { value: nombre } = await Swal.fire({
+      icon: "question",
+      title: "Ingrese su nombre",
+      input: "text",
+      showCloseButton: true,
+      confirmButtonColor: "#FD6585",
+      inputValidator: (value) => {
+        if (!value) {
+          return "Porfavor pone tu nombre 😫!";
+        }
+      },
+    });
 
-//     if (nombre) {
-//       Swal.fire({
-//         icon: "success",
-//         title: `Bienvenido ${nombre}`,
-//         confirmButtonColor: "#FD6585",
-//         showCloseButton: true,
-//       });
-//     }
+    if (nombre) {
+      Swal.fire({
+        icon: "success",
+        title: `Bienvenido ${nombre}`,
+        confirmButtonColor: "#FD6585",
+        showCloseButton: true,
+      });
+    }
 
-//     let divUsuario = document.getElementById("divUsuario");
+    let divUsuario = document.getElementById("divUsuario");
 
-//     divUsuario.innerHTML += `
-//      <h1 class="divUsuario">${nombre}, estas son tus tareas pendientes </h1>
-//      `;
-//     console.log(nombre);
-//   })();
-// }, 100);
+    divUsuario.innerHTML += `
+     <h1 class="divUsuario">${nombre}, estas son tus tareas pendientes </h1>
+     `;
+    console.log(nombre);
+  })();
+}, 100);
 
 // NOTIFICACION PARA PEDIR EL NOMBRE
 
