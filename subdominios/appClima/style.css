@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;1,100;1,300;1,400;1,700&family=Montserrat:ital,wght@0,100;1,100;1,200;1,300&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400&display=swap");
+
+body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #8ec5fc;
+    background-image: linear-gradient(62deg, #8ec5fc 0%, #e0c3fc 100%);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    min-height: 100vh;
+}
+
+/* .parent {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.div1 {
+  grid-area: 1 / 3 / 2 / 4;
+}
+.div2 {
+  grid-area: 2 / 3 / 3 / 4;
+}
+.div3 {
+  grid-area: 3 / 2 / 3 / 4;
+  margin-left: 40%;
+  
+} */
+
+
+.contenedor-clima {
+  text-align: center;
+  grid-gap: 15px;
+  color: #fff;
+  margin: 55px;
+
+  max-width: 75%;
+  max-height: 50%;
+
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.caja1 {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 20%;
+  margin: 10px;
+  width: 250px;
+}
+
+.caja2 {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  margin: 10px;
+}
+
+.caja3 {
+  display: flex;
+  text-align: center;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 20px;
+}
+
+
+#ubicacion {
+  font-weight: 400;
+  font-size: 35px;
+}
+
+#temperatura-valor {
+  font-weight: 300;
+}
+
+#temperatura-descripcion {
+  font-weight: 300;
+}
+
+#tempMin{
+  font-weight: 300;
+}
+#tempMax{
+  font-weight: 300;
+}
