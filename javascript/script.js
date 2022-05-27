@@ -1,4 +1,3 @@
-// Lista de tareas
 // VARIABLES LISTA TAREAS
 const lista = document.getElementById("lista");
 const input = document.getElementById("input");
@@ -13,43 +12,41 @@ let LIST;
 const time = document.getElementById("time");
 const fecha = document.getElementById("fecha");
 
-// USUARIO
-// let divUsuario = document.getElementById('divUsuario')
 
 // NOTIFICACION PARA PEDIR EL NOMBRE
 
-setTimeout(() => {
-  (async () => {
-    const { value: nombre } = await Swal.fire({
-      icon: "question",
-      title: "Ingrese su nombre",
-      input: "text",
-      showCloseButton: true,
-      confirmButtonColor: "#FD6585",
-      inputValidator: (value) => {
-        if (!value) {
-          return "Porfavor pone tu nombre 😫!";
-        }
-      },
-    });
+// setTimeout(() => {
+//   (async () => {
+//     const { value: nombre } = await Swal.fire({
+//       icon: "question",
+//       title: "Ingrese su nombre",
+//       input: "text",
+//       showCloseButton: true,
+//       confirmButtonColor: "#FD6585",
+//       inputValidator: (value) => {
+//         if (!value) {
+//           return "Porfavor pone tu nombre 😫!";
+//         }
+//       },
+//     });
 
-    if (nombre) {
-      Swal.fire({
-        icon: "success",
-        title: `Bienvenido ${nombre}`,
-        confirmButtonColor: "#FD6585",
-        showCloseButton: true,
-      });
-    }
+//     if (nombre) {
+//       Swal.fire({
+//         icon: "success",
+//         title: `Bienvenido ${nombre}`,
+//         confirmButtonColor: "#FD6585",
+//         showCloseButton: true,
+//       });
+//     }
 
-    let divUsuario = document.getElementById("divUsuario");
+//     let divUsuario = document.getElementById("divUsuario");
 
-    divUsuario.innerHTML += `
-     <h1 class="divUsuario">${nombre}, estas son tus tareas pendientes </h1>
-     `;
-    console.log(nombre);
-  })();
-}, 100);
+//     divUsuario.innerHTML += `
+//      <h1 class="divUsuario">${nombre}, estas son tus tareas pendientes </h1>
+//      `;
+//     console.log(nombre);
+//   })();
+// }, 100);
 
 // NOTIFICACION PARA PEDIR EL NOMBRE
 
@@ -249,3 +246,94 @@ Sortable.create(lista, {
 });
 
 // DRAG Y DROP
+
+// CLIMA
+
+// obtengo ubicacion del usuario
+window.addEventListener('load', () => {
+  
+  let lat
+  let lon
+
+  let temperaturaValor = document.getElementById('temperatura-valor')
+  let temperaturaDescripcion = document.getElementById('temperatura-descripcion')
+
+  let ubicacion = document.getElementById('ubicacion')
+  let iconoAnimado = document.getElementById('iconoAnimado')
+  
+  if(navigator.geolocation){
+    navigator.geolocation.getCurrentPosition(posicion => {
+      lat = posicion.coords.latitude
+      lon = posicion.coords.longitude
+
+      const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lang=es&units=metric&lon=${lon}&appid=495e29ffe2618a1c71e17084c4e8ee1f`
+
+
+      // peticiones a la api
+
+      fetch(url)
+      .then(response => {return response.json()})
+      .then (data => {
+
+        let temp = Math.round(data.main.temp)
+        temperaturaValor.textContent = `${temp} ºC `
+        
+        let desc = data.weather[0].description
+        temperaturaDescripcion.textContent = desc
+
+        ubicacion.textContent = data.name
+        
+
+        // ICONOS ANIMADOS
+
+
+        console.log(data.weather[0].main)
+        switch (data.weather[0].main) {
+
+            case 'Thunderstorm':
+              iconoAnimado.src='assets/animated/thunder.svg'
+              break;
+
+            case 'Drizzle':
+              iconoAnimado.src=' assets/animated/rainy-2.svg'
+              break;
+
+            case 'Rain':
+              iconoAnimado.src='assets/animated/rainy-7.svg'
+              break;
+
+            case 'Snow':
+              iconoAnimado.src='assets/animated/snowy-6.svg'
+              break;   
+
+            case 'Clear':
+                iconoAnimado.src='assets/animated/day.svg'
+              break;
+
+            case 'Atmosphere':
+              iconoAnimado.src='assets/animated/weather.svg'
+                break;  
+
+            case 'Clouds':
+                iconoAnimado.src='assets/animated/cloudy-day-1.svg'
+                break;  
+
+            default:
+              iconoAnimado.src='assets/animated/cloudy-day-1.svg'
+          }
+
+
+      })
+        .catch(error => {
+          console.log(error)
+        })
+
+      })
+
+  }
+
+})
+
+
+
+// FIN CLIMA

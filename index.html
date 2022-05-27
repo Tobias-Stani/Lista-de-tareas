@@ -17,7 +17,26 @@
 
     <link rel="stylesheet" href="./styles/styles.css" />
   </head>
+
   <body>
+    <!-- CLIMA -->
+
+    <div class="contenedor-clima">
+      
+        <div class="caja2">
+          <h2 id="ubicacion"></h2>
+          <img id="iconoAnimado" src="" alt="" height="128" width="128" />
+        </div>
+      
+        <div class="caja1">
+          <h1 id="temperatura-valor"></h1>
+          <h1 id="temperatura-descripcion"></h1>
+        </div>
+
+    </div>
+
+    <!-- FIN CLIMA -->
+
     <!-- RELOJ -->
 
     <div class="container-clock">
@@ -25,7 +44,7 @@
       <p id="fecha">Fecha</p>
     </div>
 
-    <!-- RELOJ -->
+    <!-- FIN RELOJ -->
 
     <!-- lista de tareas -->
 
@@ -35,28 +54,21 @@
         <span>Ponete a laburar 🤬</span>
       </div>
 
-      
       <div class="agregar-tarea">
         <input type="text" id="input" placeholder="Agrega una tarea" />
         <i id="enter" class="fas fa-plus-circle"></i>
       </div>
 
       <div id="divUsuario"></div>
-      
+
       <div class="seccion-tarea">
-        <!-- <h3>Tareas pendientes</h3> -->
-        <ul id="lista" class="lista">
-          <!-- <li>
-                    <i class="far fa-circle co" id="0" data="realizado"></i>
-                    <p class="text line-trough" id=""></p>
-                    <i class="fas fa-trash de" id="0" data="eliminado"></i>
-                </li> -->
-        </ul>
+        <ul id="lista" class="lista"></ul>
       </div>
     </div>
 
-    <!-- lista de tareas -->
+    <!-- fin lista de tareas -->
 
+    <!-- FOOTER -->
     <footer class="footer">
       <h3>Developed by Tobias Stanislavsky😄👨🏻‍💻</h3>
       <a href="./subdominios/dolar.html">.</a>
@@ -80,9 +92,9 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- SWEET ALERT -->
 
-     <!-- sortable.js -->
-     <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
-     <!-- sortable.js -->
+    <!-- sortable.js -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <!-- sortable.js -->
 
     <script src="./javascript/script.js"></script>
   </body>
